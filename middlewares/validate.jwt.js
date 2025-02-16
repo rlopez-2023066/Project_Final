@@ -2,6 +2,8 @@
 'use strict'
 
 import jwt from 'jsonwebtoken'
+import { findUser } from '../utils/db.validators.js'
+
 
 export const validateJwt = async(req, res, next)=>{
     try{
@@ -13,6 +15,7 @@ export const validateJwt = async(req, res, next)=>{
         if(!authorization) return res.status(401).send({message: 'Unauthorized'})
         let user = jwt.verify(authorization, secretKey)
         //Validar que el usuario exista
+        const validateUser = await findUser(user.uid)   
         if(!validateUser) return res.status(404).send(
             {
                 success: false,

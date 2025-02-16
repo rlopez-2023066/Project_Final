@@ -9,15 +9,19 @@ import {
 } from '../product/product.controller.js'
 
 import {
+    isAdmin,
     validateJwt, 
-    isAdmin
+    
 } from '../../middlewares/validate.jwt.js'
+import { productValidator } from "../../middlewares/validators.js";
 
 const api = Router()
+
+
 //Rutas Del ADMIN
-api.post('/addProduct', validateJwt, createProduct)
-api.put('/updateProduct/:id', validateJwt, updateProduct)
-api.delete('/deleteProduct/:id', validateJwt, deleteProduct)
+api.post('/addProduct',  validateJwt, isAdmin, productValidator,  createProduct)
+api.put('/updateProduct/:id',  validateJwt, isAdmin, productValidator, updateProduct)
+api.delete('/deleteProduct/:id',  validateJwt, isAdmin, deleteProduct)
 
 //Rutas Del CLIENTE
 api.get('/listProduct', validateJwt, listProduct)

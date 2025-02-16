@@ -43,7 +43,6 @@ export const login = async(req, res) => {
                 ]
             }
         )
-        console.log(user);
 
         if(user && await checkPassword(user.password, password)){
 
