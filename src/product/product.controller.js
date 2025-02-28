@@ -81,12 +81,12 @@ export const listProduct = async(req, res) => {
     }
 }
 
-// Buscar Producto por ID
+// Buscar Producto por Nombre
 export const getProductById = async (req, res) => {
     try{
         let {id} = req.params
         
-        let product = await Product.findById(id)
+        let product = await Product.findById({name: id})
 
         if(!product){
             return res.status(404).send(

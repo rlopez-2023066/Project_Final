@@ -74,7 +74,7 @@ export const getCategoryById = async (req, res) => {
     try{
         let {id} = req.params
 
-        let category = await Category.findById(id)
+        let category = await Category.findById({name: id})
         if(!category){
             return res.status(404).send(
                 {

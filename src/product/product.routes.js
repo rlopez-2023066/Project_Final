@@ -5,8 +5,13 @@ import {
     listProduct,
     getProductById,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    getProductCategory
 } from '../product/product.controller.js'
+
+import {
+    listCategory
+} from '../category/category.controller.js'
 
 import {
     isAdmin,
@@ -19,12 +24,14 @@ const api = Router()
 
 
 //Rutas Del ADMIN
-api.post('/addProduct',  validateJwt, isAdmin, productValidator,  createProduct)
-api.put('/updateProduct/:id',  validateJwt, isAdmin, productValidator, updateProduct)
-api.delete('/deleteProduct/:id',  validateJwt, isAdmin, deleteProduct)
+api.post('/addProduct',  validateJwt, isAdmin, productValidator,  createProduct) //Agregar Producto
+api.put('/updateProduct/:id',  validateJwt, isAdmin, productValidator, updateProduct) //Actualizar Producto
+api.delete('/deleteProduct/:id',  validateJwt, isAdmin, deleteProduct) //Eliminar Producto
 
 //Rutas Del CLIENTE
-api.get('/listProduct', validateJwt, listProduct)
-api.get('/getProductById/:id', validateJwt, getProductById)
+api.get('/listProduct', validateJwt, listProduct) //Listar todos los productos
+api.get('/getProductById/:id', validateJwt, getProductById) //Buscar por nombre
+api.get('/getProductCategory', validateJwt, getProductCategory) //Buscar Produtos por Categoria (ID BODY)
+api.get('/listCategory', validateJwt, listCategory) //Listar todas las categorias
 
 export default api;

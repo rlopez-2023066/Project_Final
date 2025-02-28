@@ -1,7 +1,6 @@
 import { Router } from "express";
 import {
     addCategory,
-    listCategory,
     getCategoryById,
     updateCategory,
     deleteCategory
@@ -23,7 +22,6 @@ api.put('/updateCategory/:id', validateJwt, isAdmin, categoryValidator, updateCa
 api.delete('/deleteCategory/:id',  validateJwt, isAdmin, deleteCategory)
 
 //Rutas Del CLIENTE
-api.get('/listCategory', validateJwt, listCategory)
-api.get('/getCategoryById/:id', validateJwt, getCategoryById)
+api.get('/getCategoryById/:id', validateJwt, getCategoryById) // Buscar categoria por Nombre
 
 export default api
