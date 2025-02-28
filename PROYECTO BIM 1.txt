@@ -1,0 +1,41 @@
+Login ✅
+Register ✅
+Validaciones
+
+(Productos)
+Model ✅ (Verificar si hay que hacer cambios)
+
+Controller✅ (Verificar si hay que hacer cambios) 
+(add, list, update, delete, listStock, listCategory) ✅ 
+(sellingProducts) 
+
+Routes ✅ (Agregar las validaciones necesarias)
+
+(Categorias)
+Model ✅ (Verificar si hay que hacer cambios)
+
+Controller (add, list, getId, update, delete) ✅  (Que a la hora de que la categoria no exista, enviar los productos a una categoria predeterminada) 
+
+Routes ✅ (Agregar las validaciones Necesarias
+
+(User)
+Model ✅
+
+Controller (Realizar funcion para que solo los administradores tenga la opcion de cambiar roles, el rol de cliente, solo puede hacer los cambios mencionados, ademas que se tiene que actualizar su perfil menos los apartados que realiza el admin)
+
+Routes (Agregar las validaciones necesarias)
+
+
+(Facturas)
+Model
+
+Controller (Realizar funcion para que el admin pueda editar dichas facturas, ademas que puede listar las facturas asociadas al cliente, ademas que visualizar los productos detallados en la factura)
+
+Routes
+
+
+------------------------------------- CLIENTE -------------------------------------
+
+
+
+
