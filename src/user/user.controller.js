@@ -139,3 +139,32 @@ export const deleteUser = async(req, res) => {
         )
     }
 }
+
+const initUser  = async () => {
+    try {
+        const adminExist = await User.findOne({ role: 'ADMIN' }) 
+
+        if (!adminExist) {
+            const password = await encrypt('@dmin', 10) 
+
+            const userAdmin = new User({
+                name: 'Rene',
+                surname: 'López', 
+                username: 'rlopez',
+                email: 'rlopez@gmail.com',
+                password: password,
+                phone: '47491420',
+                role: 'ADMIN',
+            }) 
+
+            await userAdmin.save() 
+            console.log('Admin created') 
+        } else {
+            console.log('Admin already exists') 
+        }
+    } catch (error) {
+        console.error('Error, not Admin created', error) 
+    }
+} 
+
+initUser()

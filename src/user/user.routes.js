@@ -16,3 +16,4 @@ api.put('/updateUser/:id', validateJwt, updateUser) //Actualiza el usuario, falt
 api.put('/updatePassword', validateJwt, updatePassword) //Actualiza la contraseña 
 api.delete('/deleteUser/:id', validateJwt, deleteUser) //Elimina el usuario (Ingresando el password)
 
+export default api

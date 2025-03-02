@@ -25,7 +25,7 @@ export const createProduct = async(req, res) => {
         )
 
     }catch(error){
-        console.error(error);
+        console.error(error) 
         return res.status(500).send(
             {
                 success:false,
@@ -70,7 +70,7 @@ export const listProduct = async(req, res) => {
         )
 
     }catch(error){
-        console.error(error);
+        console.error(error) 
         return res.status(500).send(
             {
                 success:false,
@@ -86,7 +86,7 @@ export const getProductById = async (req, res) => {
     try{
         let {id} = req.params
         
-        let product = await Product.findById({name: id})
+        let product = await Product.findById(id)
 
         if(!product){
             return res.status(404).send(
@@ -97,7 +97,7 @@ export const getProductById = async (req, res) => {
         }
         return res.send({message: 'Product Found: ', product })
     }catch(error){
-        console.error(error);
+        console.error(error) 
         return res.status(500).send(
             {
                 message: 'General error when list product', error
@@ -111,6 +111,18 @@ export const updateProduct = async (req, res) => {
     try {
         let {id} = req.params
         let data = req.body
+        let {category} = req.body
+
+        const categoryId = await Category.findById(category)
+        if(!categoryId){
+            return res.status(404).send(
+                {
+                    success: false,
+                    message: 'Category not found',
+                }
+            )
+        }
+
         let updateProduct = await Product.findByIdAndUpdate(
             id,
             data,
@@ -120,7 +132,7 @@ export const updateProduct = async (req, res) => {
         if(!updateProduct) return res.status(404).send({message: 'Product not found and not updated'})
         return res.send({message: 'Animal updated', updateProduct})
     }catch(error){
-        console.error(error);
+        console.error(error) 
         return res.status(500).send({message: 'General error', error})
     }
 }
@@ -137,7 +149,7 @@ export const deleteProduct = async (req, res) =>{
             }
         )
     }catch(error){
-        console.error(error);
+        console.error(error) 
         return res.status(500).send(
             {
                 message: 'General Error', error
@@ -146,23 +158,43 @@ export const deleteProduct = async (req, res) =>{
     }
 }
 
-//Buscar por Categoria
-export const getProductCategory = async(req, res) =>{
-    try{
-        let {category} = req.body
+import mongoose from 'mongoose' 
 
-        let products = await Product.find({category})
+// Buscar por Categoría
+export const getProductCategory = async (req, res) => {
+    try {
+        const { category } = req.body 
 
-        return res.send(products)
-    }catch(error){
-        console.error(error);
-        return res.status(500).send(
-            {
-                message: 'General Error', error
-            }
-        )
+       
+        const categoryExists = await Category.findById(category)
+        if (!categoryExists) {
+            return res.status(404).send({
+                success: false,
+                message: 'Category not found'
+            })
+        }
+
+        const products = await Product.find({ category })
+            .populate({
+                path: 'category',
+                select: 'name -_id'
+            }) 
+
+        return res.status(200).send({
+            success: true,
+            products
+        })
+
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send({
+            success: false,
+            message: 'General Error',
+            error
+        })
     }
 }
+
 
 //Buscar por Stock 0
 export const outStock =async(req, res) => {
@@ -170,7 +202,7 @@ export const outStock =async(req, res) => {
         let products = await Product.find({stock: 0})
         return res.send(products)
     }catch(error){
-        console.error(error);
+        console.error(error) 
         return res.status(500).send(
             {
                 message: 'General Error', error

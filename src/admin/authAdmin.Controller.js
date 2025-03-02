@@ -30,12 +30,24 @@ export const registerUserAdmin = async(req, res) => {
 //Update Rol User (Admin)
 export const updateRol = async(req, res) => {
     try{
-        let {rol} = req.body
+        let {role} = req.body
         let {id} = req.params
+
+        const user = await User.findById(id)
+        if(!user){
+            return res.status(404).send(
+                {
+                    success: false,
+                    message: 'User not found'
+                }
+            )
+        }
+
+
         
         const rolUser = await User.findByIdAndUpdate(
             id,
-            rol,
+            {role},
             {new: true}
         )
 
