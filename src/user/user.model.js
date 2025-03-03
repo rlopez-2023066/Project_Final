@@ -43,7 +43,21 @@ const userSchema = Schema(
             required: [true, 'Role is required'],
             uppercase: true,
             enum: ['ADMIN', 'CLIENT']
-        }
+        },
+        
+        shopCart: [
+            {
+                productId: {
+                    type: Schema.Types.ObjectId,
+                    ref: 'Product'
+                },
+
+                quantity: {
+                    type: Number,
+                    default: 1
+                }
+            }
+        ]
     }
 )
 

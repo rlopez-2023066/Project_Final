@@ -10,6 +10,8 @@ import productRoutes from '../src/product/product.routes.js'
 import authRoutes from '../src/auth/auth.routes.js'
 import authAdminRoutes from '../src/admin/authAdmin.routes.js'
 import userRoutes from '../src/user/user.routes.js'
+import invoiceRoutes from '../src/invoice/invoice.routes.js'
+import shopCartRoutes from '../src/cart/cart.routes.js'
 
 
 const configs = (app)=> {
@@ -26,6 +28,8 @@ const routes = (app)=> {
     app.use('/v1/product', productRoutes)
     app.use('/v1/authAdminRoutes', authAdminRoutes)
     app.use('/v1/userRoutes', userRoutes)
+    app.use('/v1/invoiceRoutes', invoiceRoutes)
+    app.use('/v1/shopCart', shopCartRoutes)
 
 }
 
