@@ -6,6 +6,7 @@ import {
 } from '../../utils/encryp.js'
 
 import User from '../user/user.model.js'
+import Category from '../category/category.model.js'
 
 //Update Usuario
 export const updateUser = async(req, res) => {
@@ -167,4 +168,28 @@ const initUser  = async () => {
     }
 } 
 
+const initCategory = async () => {
+    try {
+        const categories = await Category.countDocuments() 
+        if (categories === 0) {
+            const categoriesDefault = [
+                {
+                    name: 'Default',
+                    description: 'Default category',
+                },
+            ] 
+
+            await Category.insertMany(categoriesDefault) 
+            console.log('Default categories added') 
+        } else {
+            console.log('Categories already exist') 
+        }
+    } catch (error) {
+        console.error({
+            message: 'Error adding default categories',
+            error,
+        }) 
+    }
+} 
+initCategory()
 initUser()
