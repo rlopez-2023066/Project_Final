@@ -1,4 +1,5 @@
 import Category from '../category/category.model.js'
+import Product from '../product/product.model.js'
 
 //Crear Categoria
 export const addCategory = async(req, res) => {
@@ -19,7 +20,7 @@ export const addCategory = async(req, res) => {
 
         
     }catch(error){
-        console.error(error);
+        console.error(error) 
         return res.status(500).send(
             {
                 success: false,
@@ -117,28 +118,53 @@ export const updateCategory = async (req, res) => {
 }
 
 //Eliminar Categoría
-export const deleteCategory = async(req, res) => {
-    try{
-        
-        let {id} = req.params
-        let deletedCategory = await Category.findByIdAndDelete(id)
-        if(!deletedCategory) return res.status(404).send(
-            {
-                message: 'Category not found, not deleted'
-            }
-        )
+export const deleteCategory = async (req, res) => {
+    try {
+        const { id } = req.params  
+        const defaultCategoryName = 'Default'  
 
-        return res.send(
-            {
-                message: 'Category delete Successfully', deletedCategory
-            }
-        )
-    }catch(error){
-        console.error(error);
-        return res.status(500).send(
-            {
-                message:'General Error', error
-            }
-        )
+        const defaultCategory = await Category.findOne({ name: defaultCategoryName }) 
+        if (!defaultCategory) {
+            return res.status(404).send({
+                success: false,
+                message: 'Default category not found'
+            }) 
+        }
+
+        const categoryToDelete = await Category.findById(id) 
+        if (!categoryToDelete) {
+            return res.status(404).send({
+                success: false,
+                message: 'Category to delete not found'
+            }) 
+        }
+
+        await Product.updateMany(
+            { category: categoryToDelete._id }, 
+            { $set: { category: defaultCategory._id } } 
+        ) 
+
+        const deletedCategory = await Category.findByIdAndDelete(id) 
+        if (!deletedCategory) {
+            return res.status(404).send({
+                success: false,
+                message: 'Category not found, not deleted'
+            }) 
+        }
+
+        return res.send({
+            success: true,
+            message: 'Category deleted successfully and products moved to default category',
+            deletedCategory
+        }) 
+
+
+    } catch (error) {
+        console.error(error) 
+        return res.status(500).send({
+            
+            message: 'General Error',
+            error
+        }) 
     }
-}
+} 
