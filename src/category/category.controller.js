@@ -59,7 +59,7 @@ export const listCategory = async(req, res) => {
         )
 
     }catch(error){
-        console.error(error);
+        console.error(error) 
         return res.status(500).send(
             {
                 success: false,
@@ -91,7 +91,7 @@ export const getCategoryById = async (req, res) => {
             }
         )
     }catch(error){
-        console.error(error);
+        console.error(error) 
         return res.status(500).send({message: 'General Error ', error})
     }
 }
@@ -112,7 +112,7 @@ export const updateCategory = async (req, res) => {
         return res.send({message: 'Category updated', updateCategory})
 
     }catch(error){
-        console.error(error);
+        console.error(error) 
         return res.status(500).send({message:'General Error', error})
     }
 }
