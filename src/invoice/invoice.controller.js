@@ -12,7 +12,7 @@ export const generateInvoice = async (req, res) => {
             (
                 {
                     success: false,
-                    message: 'Usuario no encontrado',
+                    message: 'User not Found',
                 }
             ) 
         }
@@ -21,7 +21,7 @@ export const generateInvoice = async (req, res) => {
             return res.status(400).send(
                 {
                     success: false,
-                    message: 'El carrito está vacío',
+                    message: 'The cart is empty.',
                 }
             ) 
         }
@@ -35,7 +35,7 @@ export const generateInvoice = async (req, res) => {
                 return res.status(400).send(
                     {
                         success: false,
-                        message: `Producto agotado: ${product.name}`,
+                        message: `Product out of stock: ${product.name}`,
                     }
                 ) 
             }
@@ -44,7 +44,7 @@ export const generateInvoice = async (req, res) => {
         }
 
         const invoice = new Invoice({
-            userC,
+            user,
             products: user.shopCart.map(item => (
                 {
                     productId: item.productId._id,
@@ -69,7 +69,7 @@ export const generateInvoice = async (req, res) => {
         return res.status(201).send(
             {
                 success: true,
-                message: 'Factura generada correctamente',
+                message: 'Invoice generated correctly',
                 invoice,
             }
         ) 
@@ -78,7 +78,7 @@ export const generateInvoice = async (req, res) => {
         console.error(error) 
         return res.status(500).send({
             success: false,
-            message: 'Error al generar la factura',
+            message: 'Error generating invoice',
         }) 
     }
 } 
@@ -88,29 +88,32 @@ export const listHistoryInvoice = async (req, res) => {
     try {
         const userC = req.user.uid 
 
-        const invoices = await Invoice.find({ userC }).populate({
-            path: 'products.productId',
-            model: 'Product', 
-        }) 
+        const invoices = await Invoice.find({ user: userC })
+        .populate(
+            {
+                path: 'products.productId',
+                model: 'Product', 
+            }
+        ) 
 
         if (!invoices || invoices.length === 0) {
             return res.status(200).send({
                 success: true,
-                message: 'No hay facturas para este usuario',
+                message: 'There are no invoices for this user',
                 invoices: [],
             }) 
         }
 
         return res.status(200).send({
             success: true,
-            message: 'Lista de facturas obtenida correctamente',
+            message: 'Invoice list obtained successfully',
             invoices,
         }) 
     } catch (error) {
         console.error(error) 
         return res.status(500).send({
             success: false,
-            message: 'Error al listar las facturas',
+            message: 'Error listing invoices',
         }) 
     }
 } 
