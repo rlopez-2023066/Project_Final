@@ -19,14 +19,23 @@ const productSchema = Schema(
 
         stock:{
             type: Number,
+            default: 0
         },
 
         category:{
             type: Schema.Types.ObjectId,
             ref: 'Category',
             required: [true, 'Category is required']
+        },
+        
+        sales: {
+            type: Number,
+            default: 0
+
         }
+
     },
+
     {
         timestamps: true
     }
