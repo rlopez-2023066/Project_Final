@@ -40,4 +40,4 @@ const invoiceSchema = Schema(
     }
 )
 
-export default model('Invoice', invoiceSchema);
+export default model('Invoice', invoiceSchema)
