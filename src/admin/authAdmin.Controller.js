@@ -113,3 +113,29 @@ export const deleteUserAdmin = async (req, res) => {
         
     }
 }
+
+//List User
+export const listUser = async (req, res) => {
+    try{
+        let {limit, skip} = req.query
+
+        const users = await User.find()
+        .limit(limit)
+        .skip(skip)
+        return res.send(
+            {
+                success: true,
+                message: 'Users list',
+            }
+        )
+
+    }catch(error){
+        console.error(error)
+        return res.status(500).send(
+            {
+                success: false,
+                message: 'General error when listing Users',
+            }
+        )
+    }
+}
