@@ -100,18 +100,18 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Pan Integral ",
+									"value": "Gaseosas",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "Pan bimbo",
+									"value": "Gaseosas Pepsico",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:3000/v1/category/updateCategory/67c4a15bb11ac3f6781b476c",
+							"raw": "localhost:3000/v1/category/updateCategory/67c68a0fc2a3ff83b4193d3b",
 							"host": [
 								"localhost"
 							],
@@ -120,7 +120,7 @@
 								"v1",
 								"category",
 								"updateCategory",
-								"67c4a15bb11ac3f6781b476c"
+								"67c68a0fc2a3ff83b4193d3b"
 							]
 						}
 					},
@@ -138,7 +138,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/v1/category/deleteCategory/67c4a15bb11ac3f6781b476c",
+							"raw": "localhost:3000/v1/category/deleteCategory/67c68a0fc2a3ff83b4193d3b",
 							"host": [
 								"localhost"
 							],
@@ -147,7 +147,7 @@
 								"v1",
 								"category",
 								"deleteCategory",
-								"67c4a15bb11ac3f6781b476c"
+								"67c68a0fc2a3ff83b4193d3b"
 							]
 						}
 					},
@@ -184,7 +184,7 @@
 								},
 								{
 									"key": "price",
-									"value": "2",
+									"value": "10",
 									"type": "text"
 								},
 								{
@@ -194,7 +194,7 @@
 								},
 								{
 									"key": "category",
-									"value": "67c4fe0cdc0c4fc74ee44957",
+									"value": "67c68a86c2a3ff83b4193d50",
 									"type": "text"
 								}
 							]
@@ -270,7 +270,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/v1/product/getProductById/67c4a26fd4290cd09824c228",
+							"raw": "localhost:3000/v1/product/getProductById/67c68b037c5e81813dab1846",
 							"host": [
 								"localhost"
 							],
@@ -279,7 +279,7 @@
 								"v1",
 								"product",
 								"getProductById",
-								"67c4a26fd4290cd09824c228"
+								"67c68b037c5e81813dab1846"
 							]
 						}
 					},
@@ -301,33 +301,33 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Pan irlanda",
+									"value": "Tostecaz",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "Pan Integral",
+									"value": "Fritura picante",
 									"type": "text"
 								},
 								{
 									"key": "price",
-									"value": "50",
-									"type": "text"
-								},
-								{
-									"key": "stock",
 									"value": "10",
 									"type": "text"
 								},
 								{
+									"key": "stock",
+									"value": "100",
+									"type": "text"
+								},
+								{
 									"key": "category",
-									"value": "67c4a21cd4290cd09824c221",
+									"value": "67c68a86c2a3ff83b4193d50",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:3000/v1/product/updateProduct/67c4a26fd4290cd09824c228",
+							"raw": "localhost:3000/v1/product/updateProduct/67c68a98c2a3ff83b4193d54",
 							"host": [
 								"localhost"
 							],
@@ -336,7 +336,7 @@
 								"v1",
 								"product",
 								"updateProduct",
-								"67c4a26fd4290cd09824c228"
+								"67c68a98c2a3ff83b4193d54"
 							],
 							"query": [
 								{
@@ -366,7 +366,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/v1/product/deleteProduct/67c4a26fd4290cd09824c228",
+							"raw": "localhost:3000/v1/product/deleteProduct/67c68a98c2a3ff83b4193d54",
 							"host": [
 								"localhost"
 							],
@@ -375,7 +375,7 @@
 								"v1",
 								"product",
 								"deleteProduct",
-								"67c4a26fd4290cd09824c228"
+								"67c68a98c2a3ff83b4193d54"
 							]
 						}
 					},
@@ -426,7 +426,7 @@
 							"urlencoded": [
 								{
 									"key": "category",
-									"value": "67c4a21cd4290cd09824c221",
+									"value": "67c68a86c2a3ff83b4193d50",
 									"type": "text"
 								}
 							]
@@ -441,6 +441,58 @@
 								"v1",
 								"product",
 								"getProductCategory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "productStock0",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/v1/product/outStock",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"product",
+								"outStock"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "salesProduct",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/v1/product/salesProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"product",
+								"salesProduct"
 							]
 						}
 					},
@@ -480,7 +532,7 @@
 							"urlencoded": [
 								{
 									"key": "userLogin",
-									"value": "plopez",
+									"value": "andLopez",
 									"type": "text"
 								},
 								{
@@ -525,7 +577,7 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Pablo",
+									"value": "Andre",
 									"type": "text"
 								},
 								{
@@ -535,12 +587,12 @@
 								},
 								{
 									"key": "username",
-									"value": "plopez",
+									"value": "andlopez",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "plopez@gmail.com",
+									"value": "andlopez@gmail.com",
 									"type": "text"
 								},
 								{
@@ -622,7 +674,7 @@
 							"urlencoded": [
 								{
 									"key": "role",
-									"value": "ADMIN",
+									"value": "Client",
 									"type": "text"
 								},
 								{
@@ -634,7 +686,7 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:3000/v1/authAdminRoutes/updateRol/67c4a116ad0b611595e9f649",
+							"raw": "localhost:3000/v1/authAdminRoutes/updateRol/67c68a07c2a3ff83b4193d37",
 							"host": [
 								"localhost"
 							],
@@ -643,7 +695,7 @@
 								"v1",
 								"authAdminRoutes",
 								"updateRol",
-								"67c4a116ad0b611595e9f649"
+								"67c68a07c2a3ff83b4193d37"
 							]
 						}
 					},
@@ -730,7 +782,36 @@
 					"name": "updateUser",
 					"request": {
 						"method": "PUT",
-						"header": []
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Alfredo",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/v1/userRoutes/updateUser/67c68a07c2a3ff83b4193d37",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"userRoutes",
+								"updateUser",
+								"67c68a07c2a3ff83b4193d37"
+							]
+						}
 					},
 					"response": []
 				},
@@ -738,7 +819,40 @@
 					"name": "updatePassword",
 					"request": {
 						"method": "PUT",
-						"header": []
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "oldPassword",
+									"value": "Alfred@88917.",
+									"type": "text"
+								},
+								{
+									"key": "newPassword",
+									"value": "Alfred@88917",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/v1/userRoutes/updatePassword",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"userRoutes",
+								"updatePassword"
+							]
+						}
 					},
 					"response": []
 				},
@@ -771,12 +885,12 @@
 							"urlencoded": [
 								{
 									"key": "productId",
-									"value": "67c4fe3adc0c4fc74ee4495c",
+									"value": "67c68b037c5e81813dab1846",
 									"type": "text"
 								},
 								{
 									"key": "quantity",
-									"value": "4",
+									"value": "5",
 									"type": "text"
 								}
 							]
@@ -845,7 +959,7 @@
 							"urlencoded": []
 						},
 						"url": {
-							"raw": "localhost:3000/v1/shopCart/deleteProductShopCart/67c4fe6bdc0c4fc74ee44961",
+							"raw": "localhost:3000/v1/shopCart/deleteProductShopCart/67c68b037c5e81813dab1846",
 							"host": [
 								"localhost"
 							],
@@ -854,7 +968,7 @@
 								"v1",
 								"shopCart",
 								"deleteProductShopCart",
-								"67c4fe6bdc0c4fc74ee44961"
+								"67c68b037c5e81813dab1846"
 							]
 						}
 					},
@@ -896,9 +1010,9 @@
 					"response": []
 				},
 				{
-					"name": "listHistoryInvoice",
+					"name": "updateInvoice",
 					"request": {
-						"method": "GET",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
@@ -906,8 +1020,23 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "productId",
+									"value": "67c68b037c5e81813dab1846",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "10",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
-							"raw": "localhost:3000/v1/invoiceRoutes/listHistoryInvoice",
+							"raw": "localhost:3000/v1/invoiceRoutes/updateInvoice/67c68d3f4cb382840377e0f0",
 							"host": [
 								"localhost"
 							],
@@ -915,7 +1044,8 @@
 							"path": [
 								"v1",
 								"invoiceRoutes",
-								"listHistoryInvoice"
+								"updateInvoice",
+								"67c68d3f4cb382840377e0f0"
 							]
 						}
 					},
