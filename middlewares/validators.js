@@ -62,8 +62,7 @@ export const categoryValidator = [
 
 export const productValidator=[
     body('name', 'Name cannot be empty')
-        .notEmpty()
-        .custom(existProduct),
+        .notEmpty(),
     body('description', 'Description is required')
         .notEmpty(),
     body('price', 'Price cannot be empty')
