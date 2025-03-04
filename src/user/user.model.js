@@ -56,6 +56,10 @@ const userSchema = Schema(
                     type: Number,
                     default: 1
                 }
+
+                
+        
+        
             }
         ]
     }

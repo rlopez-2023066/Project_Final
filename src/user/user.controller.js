@@ -51,7 +51,7 @@ export const updateUser = async(req, res) => {
             }
         )
     }catch(error){
-        console.error(error);
+        console.error(error) 
         return res.status(500).send(
             {
                 success: false,
@@ -90,7 +90,7 @@ export const updatePassword = async(req, res) => {
             }
         )
     }catch (error){
-        console.error(error);
+        console.error(error) 
         return res.status(500).send(
             {
                 success: false, 
@@ -121,7 +121,7 @@ export const deleteUser = async(req, res) => {
 
         if(userC && await checkPassword(userC.password, password)){
             await User.findByIdAndDelete(id)
-            console.log('User deleted Successfully');
+            console.log('User deleted Successfully') 
         }
 
         return res.send (
