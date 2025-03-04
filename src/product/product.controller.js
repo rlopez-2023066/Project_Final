@@ -130,7 +130,7 @@ export const updateProduct = async (req, res) => {
         )
 
         if(!updateProduct) return res.status(404).send({message: 'Product not found and not updated'})
-        return res.send({message: 'Animal updated', updateProduct})
+        return res.send({message: 'Product updated', updateProduct})
     }catch(error){
         console.error(error) 
         return res.status(500).send({message: 'General error', error})
@@ -158,7 +158,6 @@ export const deleteProduct = async (req, res) =>{
     }
 }
 
-import mongoose from 'mongoose' 
 
 // Buscar por Categoría
 export const getProductCategory = async (req, res) => {
@@ -200,12 +199,50 @@ export const getProductCategory = async (req, res) => {
 export const outStock =async(req, res) => {
     try{
         let products = await Product.find({stock: 0})
-        return res.send(products)
+    
+        
+        return res.send(
+            {
+                success: true,
+                message: 'Products Found',
+                products
+            }
+        )
     }catch(error){
         console.error(error) 
         return res.status(500).send(
             {
                 message: 'General Error', error
+            }
+        )
+    }
+}
+
+//Buscar por ventas 
+export const salesProduct = async (req, res) => {
+    try {
+        
+        let products = await Product.find({sales: { $gt: 0 }})
+        .sort(
+            {
+                sales: 1
+            }
+        )
+
+        return res.send(
+            {
+                success: true,
+                message: 'Products found',
+                products
+            }
+        )
+    }catch(error){
+        console.error(error)
+        return res.status(500).send(
+            {
+                success: false,
+                message: 'General Error',
+                error
             }
         )
     }
