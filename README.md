@@ -74,6 +74,6 @@ Acceso restringido por rol a rutas específicas.
 
 Validaciones en edición/eliminación de datos sensibles.
 
-##📬 Autor
+## 📬 Autor
 Desarrollado por R. López
 GitHub: @rlopez-2023066
